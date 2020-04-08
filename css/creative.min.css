@@ -86,7 +86,7 @@ a {
 
 .btn-operation:focus,
 .btn-operation:hover {
-    background: #E8E8E8;
+    background: #a3b6b3;
     color: #444;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -113,8 +113,9 @@ a {
 
 .calu-w3ls,
 .calu-w3ls:focus {
-    background: #292929 !important;
-    color: #FFF;
+    /* background: #292929 !important; */
+    background: #292929;
+    color: #e7e7e7;
     width: 62px;
     height: 62px;
     border-radius: 100px;
@@ -124,8 +125,8 @@ a {
 }
 
 .calu-w3ls:hover {
-    background: #455A64;
-    color: #FFF;
+    background: #a3b6b3;
+    color: #455A64;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
     -moz-transition: 0.5s all;

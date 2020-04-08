@@ -2,7 +2,7 @@
  * @Date        : 2020-04-08 14:38:06
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-04-08 23:44:38
+ * @LastEditTime: 2020-04-09 00:27:22
  * @FilePath    : \CalculatorWidget\README.md
  * @Describe    : 
  -->
@@ -24,7 +24,8 @@
 - [ ] 除以0的提示
 - [ ] 除以0.x有bug
 - [ ] 数学公式符号
-- [ ] 按钮点击交互
+- [x] 按钮点击交互
 - [ ] 计算器功能选择
   - 点击右边排版重新显示
 - [ ] 手机屏幕动态调节  
+- [ ] 多次点击运算符的时候可以替换上次的运算符
