@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var displayBox = document.getElementById("display");
   var hasEvaluated = false;
 
@@ -13,7 +13,7 @@ $(document).ready(function() {
   }
 
   //PLUS MINUS
-  $("#plus_minus").click(function() {
+  $("#plus_minus").click(function () {
     if (eval(displayBox.innerHTML) > 0) {
       displayBox.innerHTML = "-" + displayBox.innerHTML;
     } else {
@@ -21,54 +21,72 @@ $(document).ready(function() {
     }
   });
 
-  //ON CLICK ON NUMBERS
-  $("#calu-w3ls").click(function() {
-    displayBox.innerHTML = "0";
-    $("#display").css("font-size", "60px");
-    // $("#display").css("margin-top", "110px");
-    $("button").prop("disabled", false);
+  //anlzou：取消上次的输入,退格
+  $("#back").click(function () {
+    displayBox.innerHTML = displayBox.innerHTML.substring(0, displayBox.innerHTML.length - 1);
+    //$("button").prop("disabled", false);
   });
-  $("#one").click(function() {
+
+  //anlzou：+排列计算+当前计算类型提示
+  // $("#A").click(function () {
+  //   var text = document.getElementById("text");
+  //   text.innerHTML = "排列组合计算";
+  // });
+
+  //anlzou：+组合计算+当前计算类型提示
+  // $("#C").click(function () {
+  //   var text = document.getElementById("text");
+  //   text.innerHTML = "排列组合计算";
+  // });
+
+  //ON CLICK ON NUMBERS
+  $("#calu-w3ls").click(function () {
+    displayBox.innerHTML = "0";
+    //$("#display").css("font-size", "60px");
+    // $("#display").css("margin-top", "110px");
+    //$("button").prop("disabled", false);
+  });
+  $("#one").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(1);
   });
-  $("#two").click(function() {
+  $("#two").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(2);
   });
-  $("#three").click(function() {
+  $("#three").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(3);
   });
-  $("#four").click(function() {
+  $("#four").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(4);
   });
-  $("#five").click(function() {
+  $("#five").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(5);
   });
-  $("#six").click(function() {
+  $("#six").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(6);
   });
-  $("#seven").click(function() {
+  $("#seven").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(7);
   });
-  $("#eight").click(function() {
+  $("#eight").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(8);
   });
-  $("#nine").click(function() {
+  $("#nine").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(9);
   });
-  $("#zero").click(function() {
+  $("#zero").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(0);
   });
-  $("#decimal").click(function() {
+  $("#decimal").click(function () {
     if (displayBox.innerHTML.indexOf(".") === -1 ||
       (displayBox.innerHTML.indexOf(".") !== -1 && displayBox.innerHTML.indexOf("+") !== -1) ||
       (displayBox.innerHTML.indexOf(".") !== -1 && displayBox.innerHTML.indexOf("-") !== -1) ||
@@ -79,40 +97,46 @@ $(document).ready(function() {
   });
 
   //OPERATORS
-  $("#add").click(function() {
+  $("#add").click(function () {
     evaluate();
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "+";
   });
-  $("#subtract").click(function() {
+  $("#subtract").click(function () {
     evaluate();
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "-";
   });
-  $("#multiply").click(function() {
+  $("#multiply").click(function () {
     evaluate();
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "×";
   });
-  $("#divide").click(function() {
+  $("#divide").click(function () {
     evaluate();
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "÷";
   });
-  $("#square").click(function() {
+  $("#square").click(function () {
     var num = Number(displayBox.innerHTML);
     num = num * num;
     checkLength(num);
     displayBox.innerHTML = num;
   });
-  $("#sqrt").click(function() {
+  $("#sqrt").click(function () {
     var num = parseFloat(displayBox.innerHTML);
     num = Math.sqrt(num);
     displayBox.innerHTML = Number(num.toFixed(5));
   });
-  $('#equals').click(function() {
-  	evaluate();
-  	hasEvaluated = true;
+  $('#equals').click(function () {
+    evaluate();
+    hasEvaluated = true;
+  });
+  //anlzou:取余运算
+  $('#remainder').click(function () {
+    evaluate();
+    checkLength(displayBox.innerHTML);
+    displayBox.innerHTML += "%";
   });
 
   //EVAL FUNCTION

@@ -219,7 +219,8 @@ img {
 /* end reset */
 
 body {
-    background: url(../images/2.jpg) no-repeat;
+    /* background: url(../images/2.jpg) no-repeat; */
+    background-color: black;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -291,7 +292,8 @@ h2 {
 }
 
 .left-count {
-    flex: 3;
+    /* anlzou:3->8 */
+    flex: 8;
     padding: 1em 0;
 }
 
@@ -495,7 +497,8 @@ h2 {
     }
 }
 
-@media(max-width: 375px) {
+/* anlzou:以下两个正在调试 */
+/* @media(max-width: 375px) {
     .sub-main-w3 .widget-agile {
         width: 90%;
     }
@@ -508,9 +511,9 @@ h2 {
     .thim-click-to-bottom {
         left: 76%;
     }
-}
+} */
 
-@media(max-width: 320px) {
+/* @media(max-width: 320px) {
     h1 {
         font-size: 1.8em;
         margin: 7.5vw 1vw 8vw;
@@ -530,6 +533,6 @@ h2 {
     .displayText {
         font-size: 45px !important;
     }
-}
+} */
 
 /* //responsive */
