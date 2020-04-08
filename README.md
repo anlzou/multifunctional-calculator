@@ -2,7 +2,7 @@
  * @Date        : 2020-04-08 14:38:06
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-04-09 00:27:22
+ * @LastEditTime: 2020-04-09 00:37:02
  * @FilePath    : \CalculatorWidget\README.md
  * @Describe    : 
  -->
@@ -29,3 +29,8 @@
   - 点击右边排版重新显示
 - [ ] 手机屏幕动态调节  
 - [ ] 多次点击运算符的时候可以替换上次的运算符
+- [ ] 计算完成之后，可以加小数点
+  - 退格功能已经可以使用
+- [ ] 算式修改，借鉴小米的功能
+  - 历史记录滑动查看
+- [ ] 算式结果保留有效数字，不要0
