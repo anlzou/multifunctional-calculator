@@ -306,7 +306,7 @@ h2 {
 .thim-click-to-bottom {
     position: absolute;
     left: 57%;
-    -webkit-animation: bounce 2s infinite ease-in-out;
+    /* -webkit-animation: bounce 2s infinite ease-in-out; */
     z-index: 9;
     top: 5%;
 }
@@ -316,7 +316,7 @@ h2 {
     font-size: 27px;
 }
 
-@-webkit-keyframes bounce {
+/* @-webkit-keyframes bounce {
     0%,
     20%,
     60%,
@@ -347,7 +347,7 @@ h2 {
     80% {
         -webkit-transform: translateY(-10px);
     }
-}
+} */
 
 /* //animation effect */
 
