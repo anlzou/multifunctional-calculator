@@ -219,8 +219,8 @@ img {
 /* end reset */
 
 body {
-    /* background: url(../images/2.jpg) no-repeat; */
-    background-color: black;
+    background: url(../images/2.jpg) no-repeat;
+    /* background-color: black; */
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;

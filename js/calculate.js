@@ -117,17 +117,17 @@ $(document).ready(function () {
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "÷";
   });
-  $("#square").click(function () {
-    var num = Number(displayBox.innerHTML);
-    num = num * num;
-    checkLength(num);
-    displayBox.innerHTML = num;
-  });
-  $("#sqrt").click(function () {
-    var num = parseFloat(displayBox.innerHTML);
-    num = Math.sqrt(num);
-    displayBox.innerHTML = Number(num.toFixed(5));
-  });
+  // $("#square").click(function () {
+  //   var num = Number(displayBox.innerHTML);
+  //   num = num * num;
+  //   checkLength(num);
+  //   displayBox.innerHTML = num;
+  // });
+  // $("#sqrt").click(function () {
+  //   var num = parseFloat(displayBox.innerHTML);
+  //   num = Math.sqrt(num);
+  //   displayBox.innerHTML = Number(num.toFixed(5));
+  // });
   $('#equals').click(function () {
     evaluate();
     hasEvaluated = true;
