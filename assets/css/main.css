@@ -9,6 +9,17 @@
     padding: 1em 0;
 }
 
+.inputText{
+	/* background-color:#d1c7be78;  */
+	/* color: #000;  */
+	font-size: 20px; 
+	font-weight:900;
+	/* color: #3498db; */
+	text-align: center;
+}
+
+.inputText:hover { border:solid 1px #c00;}
+
 /*
 	Binary by TEMPLATED
 	templated.co @templatedco
@@ -24,6 +35,7 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		background-color: #292929;
 	}
 
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -3112,7 +3124,7 @@
 			#header nav a:hover {
 				color: #fff;
 			}
-
+/*
 			#header nav a[href="#menu"] {
 				text-decoration: none;
 				-webkit-tap-highlight-color: transparent;
@@ -3140,7 +3152,7 @@
 
 			#header nav a:last-child {
 				padding-right: 1.25em;
-			}
+			} */
 
 			@media screen and (max-width: 736px) {
 
@@ -3575,6 +3587,7 @@
 				}
 
 		}
+		
 
 /* Main */
 
