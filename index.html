@@ -2,7 +2,7 @@
  * @Date        : 2020-04-10 16:39:14
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-04-10 21:03:03
+ * @LastEditTime: 2020-04-10 22:35:00
  * @FilePath    : \CalculatorWidget\index.html
  * @Describe    : 
  -->
@@ -15,72 +15,54 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="stylesheet" href="assets/css/creative.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 </head>
 
 <body>
 	<!-- Header -->
-	<header id="header">
+	<!-- <header id="header">
 		<a class="logo"><strong style="color: rgb(205, 212, 218);">组合-计算器</strong></a>
 		<nav>
-			<a href="#menu">重置</a>
+			<a href="#menu">功能</a>
+		</nav>
+	</header> -->
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="logo"><strong>Assemble-Calculator</strong></a>
+		<nav>
+			<a href="#menu">Menu</a>
 		</nav>
 	</header>
+
+	<!-- Nav -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="#" id="what">如何使用</a></li>
+			<li><a href="#" id="functions">其它功能</a></li>
+			<li><a href="#" id="explain">说明</a></li>
+			<li><a href="#" id="author">作者</a></li>
+		</ul>
+	</nav>
 
 	<!-- content -->
 	<section id="banner">
 		<div class="inner">
 			<div class="displayBox">
-				<p class="displayText" id="display">
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
-					$012&nbsp;[0 1 2 3 4 5 6 7 8 0 1 2] <br>
+				<p class="displayText" id="display1">
 			</div>
 		</div>
 	</section>
 
 	<!-- Footer -->
 	<footer id="footer">
-		<input type="text" class="inputText" style="color: aliceblue;">
+		<!-- <input type="text" class="inputText" style="color: aliceblue;" id="display"> -->
+		<h1 class="inputText" style="color: aliceblue;" id="display">0</h1>
 		<div class="content" style="background-color:rgb(114, 111, 108); text-align: center;">
 			<div class="left-count inner">
 				<div class="" style="text-align: center;">
 					<button class="btn calu-w3ls hvr-back-pulse" id="calu-w3ls">C</button>
-					<button class="btn calu-w3ls hvr-back-pulse" id="Delete">D</button>
+					<button class="btn calu-w3ls hvr-back-pulse" id="delete">D</button>
 					<button class="btn calu-w3ls hvr-back-pulse" id="back">B</button>
 					<!-- <button id="remainder" class="btn calu-w3ls hvr-back-pulse">%</button> -->
 					<!-- <button id="divide" class="btn calu-w3ls hvr-back-pulse">÷</button> -->
@@ -105,8 +87,9 @@
 					<!-- <button id="add" class="btn calu-w3ls hvr-back-pulse">+</button> -->
 				</div>
 				<div class="">
-					<button id="Space" class="btn calu-w3ls hvr-back-pulse">&nbsp;</button>
-					<button class="btn btn-calc hvr-radial-out" id="zero">0</button>
+					<button id="rest" class="btn calu-w3ls hvr-back-pulse">R</button>
+					<button id="space" class="btn calu-w3ls hvr-back-pulse">&nbsp;</button>
+					<!-- <button class="btn btn-calc hvr-radial-out" id="zero">0</button> -->
 					<button id="equals" class="btn calu-w3ls hvr-back-pulse">=</button>
 				</div>
 			</div>
@@ -114,12 +97,12 @@
 	</footer>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-
+	<script src="./assets/js/jquery.min.js"></script>
+	<script src="./assets/js/jquery.scrolly.min.js"></script>
+	<script src="./assets/js/skel.min.js"></script>
+	<script src="./assets/js/util.js"></script>
+	<script src="./assets/js/main.js"></script>
+	<script src="./assets/js/calculate.js"></script>
 </body>
 
 </html>
