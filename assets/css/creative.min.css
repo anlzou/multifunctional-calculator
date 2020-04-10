@@ -38,10 +38,13 @@ a {
     font-weight: 100;
     overflow: hidden;
     text-align: left;
-    padding-right: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
     float: left;
     overflow-y: scroll;
 }
+
+.displayText::-webkit-scrollbar {display:none}
 
 .btn-calc,
 .btn-calc:focus,
@@ -214,10 +217,10 @@ a {
     }
 }
 
-@media(max-width: 2600px) {
+@media(max-width: 2900px) {
     .displayText {
         font-size: 20px !important;
-        max-height: 840px;
+        max-height: 440px;
         min-width: 100%;
     }
 }
@@ -226,21 +229,28 @@ a {
 @media(max-width: 800px) {
     .displayText {
         font-size: 24px !important;
-        max-height: 540px;
+        max-height: 500px;
     }
 }
 
 @media(max-width: 600px) {
     .displayText {
         font-size: 20px !important;
-        max-height: 390px;
+        max-height: 340px;
     }
 }
 
 @media(max-width: 360px) {
     .displayText {
         font-size: 20px !important;
-        max-height: 60px;
+        max-height: 160px;
+    }
+}
+
+@media(max-width: 300px) {
+    .displayText {
+        font-size: 20px !important;
+        max-height: 40px;
     }
 }
 

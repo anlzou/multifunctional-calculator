@@ -2,7 +2,7 @@
  * @Date        : 2020-04-08 14:38:06
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-04-10 22:47:49
+ * @LastEditTime: 2020-04-11 02:26:05
  * @FilePath    : \CalculatorWidget\README.md
  * @Describe    : 
  -->
@@ -55,18 +55,19 @@
 > ### 参考
 - 小米计算器
 - [蓝色简洁风格 在线计算器组件](https://www.51qianduan.com/temp/15947.html)
+- [响应式图文博客网站模板](http://sc.chinaz.com/moban/161030396510.htm#down)
 > ### 已经完成的功能 
 - UI界面
 - ......
 > ### 没有完成的功能
-1. Menu 子菜单
-2. 组合计算
+- [x] 1. Menu 子菜单
+- [ ] 2. 组合计算
      - 排序
      - 算法优化
-3. 元素删除
+- [ ] 3. 元素删除
      - 排序
      - 算法优化
-4. 输入处理
+- [ ] 4. 输入处理
      - 正则表达式
-5. 显示处理
+- [ ] 5. 显示处理
      - 排版
