@@ -2,7 +2,7 @@
  * @Date        : 2020-04-08 14:38:06
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-04-10 09:44:43
+ * @LastEditTime: 2020-04-10 18:10:02
  * @FilePath    : \CalculatorWidget\README.md
  * @Describe    : 
  -->
@@ -46,7 +46,7 @@
       2. 按删除数值，输入A B C ...
 2. 按钮功能
    1. 数字0-9
-   2. 空格
+   2. 空格Space
    3. 清理输入C
    4. 退格输入B
    5. 重置组合R
