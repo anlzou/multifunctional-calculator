@@ -1,5 +1,6 @@
 $(document).ready(function () {
   var displayBox = document.getElementById("display");
+  var inputText = document.getElementById("inputText");
   var hasEvaluated = false;
 
   //CHECK IF 0 IS PRESENT. IF IT IS, OVERRIDE IT, ELSE APPEND VALUE TO DISPLAY
@@ -96,6 +97,12 @@ $(document).ready(function () {
     }
   });
 
+  // anlzou空格
+  $("#space").click(function () {
+    checkLength(displayBox.innerHTML);
+    clickNumbers("&nbsp;");
+  });
+
   //OPERATORS
   $("#add").click(function () {
     evaluate();
@@ -128,10 +135,20 @@ $(document).ready(function () {
   //   num = Math.sqrt(num);
   //   displayBox.innerHTML = Number(num.toFixed(5));
   // });
+
+  // anlzou 组合运算功能
   $('#equals').click(function () {
-    evaluate();
+    // evaluate();
     hasEvaluated = true;
   });
+
+  //anlzou 删除功能
+
+  //anlzou 重置
+  $('#rest').click(function () {
+    location.reload();
+  });
+
   //anlzou:取余运算
   $('#remainder').click(function () {
     evaluate();

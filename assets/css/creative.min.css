@@ -240,7 +240,7 @@ a {
 @media(max-width: 360px) {
     .displayText {
         font-size: 20px !important;
-        max-height: 200px;
+        max-height: 60px;
     }
 }
 

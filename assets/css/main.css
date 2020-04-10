@@ -12,7 +12,7 @@
 .inputText{
 	/* background-color:#d1c7be78;  */
 	/* color: #000;  */
-	font-size: 20px; 
+	font-size: 60px; 
 	font-weight:900;
 	/* color: #3498db; */
 	text-align: center;
@@ -1654,7 +1654,7 @@
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 700;
 		line-height: 1.25;
-		margin: 0 0 1em 0;
+		margin: 0 0 0em 0;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -3244,6 +3244,7 @@
 						display: block;
 						line-height: 3.5em;
 						text-decoration: none;
+						background-color: #1c1c1c;
 					}
 
 					#menu > ul.links > li > .button {
@@ -3253,6 +3254,8 @@
 
 					#menu > ul.links > li:first-child > a:not(.button) {
 						border-top: 0 !important;
+						/* anlzou.nav */
+						background-color: #1c1c1c;
 					}
 
 		#menu .close {
@@ -3275,6 +3278,9 @@
 			top: 0;
 			vertical-align: middle;
 			width: 7em;
+
+			/* anlzou.nav */
+			background-color: #1c1c1c;
 		}
 
 			#menu .close:before {
