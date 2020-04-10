@@ -2,7 +2,7 @@
  * @Date        : 2020-04-08 14:38:06
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-04-10 09:44:43
+ * @LastEditTime: 2020-04-10 22:47:49
  * @FilePath    : \CalculatorWidget\README.md
  * @Describe    : 
  -->
@@ -46,7 +46,7 @@
       2. 按删除数值，输入A B C ...
 2. 按钮功能
    1. 数字0-9
-   2. 空格
+   2. 空格Space
    3. 清理输入C
    4. 退格输入B
    5. 重置组合R
@@ -56,6 +56,17 @@
 - 小米计算器
 - [蓝色简洁风格 在线计算器组件](https://www.51qianduan.com/temp/15947.html)
 > ### 已经完成的功能 
-- 
+- UI界面
+- ......
 > ### 没有完成的功能
-- 
+1. Menu 子菜单
+2. 组合计算
+     - 排序
+     - 算法优化
+3. 元素删除
+     - 排序
+     - 算法优化
+4. 输入处理
+     - 正则表达式
+5. 显示处理
+     - 排版
