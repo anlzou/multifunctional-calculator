@@ -16,7 +16,12 @@
 	font-weight:900;
 	/* color: #3498db; */
 	text-align: center;
+	overflow-x: scroll;
+	text-align: left;
+	padding: 0px 0px 0px 10px;
 }
+
+.inputText::-webkit-scrollbar {display:none}
 
 .inputText:hover { border:solid 1px #c00;}
 
