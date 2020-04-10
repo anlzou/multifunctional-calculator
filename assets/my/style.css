@@ -1,0 +1,129 @@
+html{
+    height:100%;
+}
+
+.left-count {
+    /* anlzou:3->8 */
+    flex: 8;
+    padding: 1em 0;
+}
+
+div {
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+  }
+   
+  body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f1f1f1;
+    /* background-image: url(../images/2.jpg); */
+    min-height:100%;
+    position:relative;
+  }
+   
+  /* 头部标题 */
+  .header {
+    padding: 30px;
+    text-align: center;
+    background: white;
+  }
+   
+  .header h1 {
+    font-size: 50px;
+  }
+   
+  /* 导航条 */
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+   
+  /* 导航条链接 */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+   
+  /* 链接颜色修改 */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+   
+  /* 创建两列 */
+  /* Left column */
+  .leftcolumn {   
+    float: left;
+    width: 75%;
+  }
+   
+  /* 右侧栏 */
+  .rightcolumn {
+    float: left;
+    width: 25%;
+    background-color: #f1f1f1;
+    padding-left: 20px;
+  }
+   
+  /* 图像部分 */
+  .fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+  }
+   
+  /* 文章卡片效果 */
+  .card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+  }
+   
+  /* 列后面清除浮动 */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+   
+  /* 底部 */
+  .footer {
+    /* padding: 20px; */
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    min-height: 40%;
+    right: 0px;
+    /* color:#fff;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    background-color: #000; */
+  }
+   
+  /* 响应式布局 - 屏幕尺寸小于 800px 时，两列布局改为上下布局 */
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+      width: 100%;
+      padding: 0;
+    }
+  }
+   
+  /* 响应式布局 -屏幕尺寸小于 400px 时，导航等布局改为上下布局 */
+  @media screen and (max-width: 400px) {
+    .topnav a {
+      float: none;
+      width: 100%;
+    }
+  }
