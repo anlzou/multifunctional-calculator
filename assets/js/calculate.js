@@ -1,6 +1,6 @@
 $(document).ready(function () {
   var displayBox = document.getElementById("display");
-  // var inputText = document.getElementById("inputText");
+  var displayText = document.getElementById("displayText");
   var hasEvaluated = false;
 
   // anlzou 变量
@@ -30,7 +30,14 @@ $(document).ready(function () {
     displayBox.innerHTML = displayBox.innerHTML.substring(0, displayBox.innerHTML.length - 1);
     $("button").prop("disabled", false);
     $(".calu-w3ls").attr("disabled", false);
-    //$("button").prop("disabled", false);
+
+    if (displayBox.innerHTML.indexOf(",") > -1) {
+      $("button").prop("disabled", false);
+      $(".calu_").attr("disabled", true);
+    } else {
+      $("button").prop("disabled", false);
+      $(".calu_").attr("disabled", false);
+    }
   });
 
   //anlzou：+排列计算+当前计算类型提示
@@ -105,6 +112,11 @@ $(document).ready(function () {
   $("#space").click(function () {
     checkLength(displayBox.innerHTML);
     clickNumbers(",");
+    $("button").prop("disabled", false);
+    $(".calu_").attr("disabled", true);
+
+    // $("button").prop("disabled", true);
+    // $(".calu_").attr("disabled", false);
   });
 
   //OPERATORS
@@ -112,21 +124,33 @@ $(document).ready(function () {
     evaluate();
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "+";
+
+    $("button").prop("disabled", false);
+    $(".calu_sapce").attr("disabled", true);
   });
   $("#subtract").click(function () {
     evaluate();
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "-";
+
+    $("button").prop("disabled", false);
+    $(".calu_sapce").attr("disabled", true);
   });
   $("#multiply").click(function () {
     evaluate();
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "×";
+
+    $("button").prop("disabled", false);
+    $(".calu_sapce").attr("disabled", true);
   });
   $("#divide").click(function () {
     evaluate();
     checkLength(displayBox.innerHTML);
     displayBox.innerHTML += "÷";
+
+    $("button").prop("disabled", false);
+    $(".calu_sapce").attr("disabled", true);
   });
   // $("#square").click(function () {
   //   var num = Number(displayBox.innerHTML);
@@ -140,10 +164,111 @@ $(document).ready(function () {
   //   displayBox.innerHTML = Number(num.toFixed(5));
   // });
 
-  // anlzou 组合运算功能
+  // 全排列组合
+  function getGroup(data, index = 0, group = []) {
+    var need_apply = new Array();
+    need_apply.push(data[index]);
+    for (var i = 0; i < group.length; i++) {
+      need_apply.push(group[i] + data[index]);
+    }
+    group.push.apply(group, need_apply);
+
+    if (index + 1 >= data.length) return group;
+    else return getGroup(data, index + 1, group);
+  }
+
+  // 全排列
+  function permute(input) {
+    var permArr = [],
+      usedChars = [];
+    function main(input) {
+      var i, ch;
+      for (i = 0; i < input.length; i++) {
+        ch = input.splice(i, 1)[0];
+        usedChars.push(ch);
+        if (input.length == 0) {
+          permArr.push(usedChars.slice());
+        }
+        main(input);
+        input.splice(i, 0, ch);
+        usedChars.pop();
+      }
+      return permArr
+    }
+    return main(input);
+  };
+
+  // 选择排列
+  function AAA(array, M) {
+    var N = array.length;
+    var top = 0, queue = [], flag = [], arr = [], _arr = [];
+    function comb(s, n, m) {
+      var i;
+      if (s > n)
+        return;
+
+      if (top == m) {
+        for (i = 0; i < m; i++) {
+          _arr.push(queue[i]);
+        }
+        arr.push(_arr)
+        _arr = []
+        return;
+      }
+      queue[top++] = array[s];
+      comb(s + 1, n, m);
+      top--;
+      comb(s + 1, n, m);
+    }
+    comb(0, N, M);
+    return arr
+  }
+
+  // 控制输出长度 $001
+  function PrefixInteger(num, length) {
+    return (Array(length).join('0') + num).slice(-length);
+  }
+
+  // anlzou 运算功能
   $('#equals').click(function () {
-    // evaluate();
-    hasEvaluated = true;
+    if (displayBox.innerHTML.indexOf(",") == -1) {
+      evaluate();
+      hasEvaluated = true;
+      displayText.innerHTML = displayBox.innerHTML;
+    } else {
+      let list;
+      let regx1 = /[0-9]+/g;
+      let regx2 = /\,\,/g;
+      let mytext = displayBox.innerHTML;
+      let index = mytext.indexOf(",");
+      //判断开头
+      if (index == 0) {
+        displayText.innerHTML = "“,”不能开头";
+      } else {//,,功能
+        index = mytext.indexOf(",,");
+        let m = mytext.substring(index, mytext.length);
+        m = m.match(regx1)[0];
+        displayText.innerHTML = m;
+
+        Number(m);
+        if (index != -1) {
+          let text2 = mytext.substring(0, index);
+          list = text2.match(regx1);
+          list = AAA(list, m);
+          console.log(list);
+          displayText.innerHTML = "";
+          let k = 1;
+          let l = (list.length).toString().length;
+          for (i in list) {
+            displayText.innerHTML += "$" + PrefixInteger(k, l) + " [" + list[i] + "]<br/>";
+            k = k + 1;
+          }
+        }
+        displayText.innerHTML += br + br;
+      }
+
+      //,功能
+    }
   });
 
   //anlzou 删除功能
@@ -157,8 +282,9 @@ $(document).ready(function () {
   $('#what').click(function () {
     let displayText = "##基本按钮" + "<br/>" + "C(cls)：清理输入框。" + "<br/>" + "D(delete)：使用输入框中的元素删除组合列表中的对应元素。" + "<br/>" +
       "B(back)：输入框退格。" + "<br/>" + "R(reset)：重置组合运算公式；与F5刷新、点击" + "“" + "Assemble-Calculator”"
-      + "logo等同功能。" + "<br/><br/>" + "##功能用法" + "<br/>" + "1、输入任意多个数值，数值之间用空格按钮(空格>=1)隔开；<br/>点击" + "“" + "=" + "”" +
-      "按钮进行组合运算；<br/>点击" + "D(delete)进行列表元素删除。<br/><br/>" + "##变量限定<br/>" + "1、输入框的字符串长度为24。<br/>" + "2、C(n,m)中规定0&le;n,m&le;=16。" + br;
+      + "logo等同功能。" + "<br/><br/>" + "##功能用法" + "<br/>" + "1、输入任意多个数值，数值之间用" + "“" + "," + "”" + "按钮(,>=1)隔开；<br/>2、如果只有一个" + "“" + "," + "”" +
+      "则取第一个(n,m)做组合运算，如果连续的逗号大于1个，则取第一个连续逗号前面的所有数为集合n，选连续逗号后面的值为m进行组合运算。" + "<br/>3、点击" + "“" + "=" + "”" +
+      "按钮进行组合运算；<br/>4、点击" + "D(delete)进行列表元素删除。<br/><br/>" + "##变量限定<br/>" + "1、输入框的字符串长度为24。<br/>" + "2、C(n,m)中规定0&le;n,m&le;=16。" + br;
     document.getElementById("displayText").innerHTML = displayText;
   });
 
@@ -204,12 +330,25 @@ $(document).ready(function () {
     displayBox.innerHTML = evaluate;
   }
 
+  // anlzou 输入框滚动显示
+  function scroll() {
+    setInterval(function () {
+      displayBox.scrollLeft++;
+    }, 120);
+  }
+
   //CHECK FOR LENGTH & DISABLING BUTTONS
   function checkLength(num) {
+    if (num.toString().length > 8) {
+      // displayBox.style.textAlign = "right";
+      scroll();
+    } else {
+      displayBox.style.textAlign = "left";
+    }
     if (num.toString().length > 7 && num.toString().length < 14) {
       $("#display").css("font-size", "60px");
       // $("#display").css("margin-top", "174px");
-    } else if (num.toString().length > 24) {
+    } else if (num.toString().length >= 24 - 1) {
       num = "Infinity";
       $("button").prop("disabled", true);
       $(".calu-w3ls").attr("disabled", false);

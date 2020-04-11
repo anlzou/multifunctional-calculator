@@ -2,7 +2,7 @@
  * @Date        : 2020-04-08 14:38:06
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-04-11 02:26:05
+ * @LastEditTime: 2020-04-11 09:51:31
  * @FilePath    : \CalculatorWidget\README.md
  * @Describe    : 
  -->
@@ -69,5 +69,6 @@
      - 算法优化
 - [ ] 4. 输入处理
      - 正则表达式
-- [ ] 5. 显示处理
+- [x] 5. 显示处理
      - 排版
+     - 输入框滚动
