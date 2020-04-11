@@ -16,7 +16,12 @@
 	font-weight:900;
 	/* color: #3498db; */
 	text-align: center;
+	overflow-x: scroll;
+	text-align: left;
+	padding: 0px 0px 0px 10px;
 }
+
+.inputText::-webkit-scrollbar {display:none}
 
 .inputText:hover { border:solid 1px #c00;}
 
@@ -1653,7 +1658,7 @@
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 700;
-		line-height: 1.25;
+		line-height: 1;
 		margin: 0 0 0em 0;
 	}
 
