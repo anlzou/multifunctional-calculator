@@ -24,18 +24,27 @@ a {
 
 .displayBox {
     background: #292929;
-    overflow: hidden
+    overflow: hidden;
+    /* min-height: 400px; */
+    /* position:absolute; */
+    /* left: 0; */
+    /* right: 0; */
+	/* top:0; */
 }
 
 .displayText {
     color: #FFF;
-    font-size: 60px;
+    font-size: 24px;
     font-weight: 100;
     overflow: hidden;
-    text-align: right;
-    padding-right: 20px;
-    float: right;
+    text-align: left;
+    padding-right: 10px;
+    padding-left: 10px;
+    float: left;
+    overflow-y: scroll;
 }
+
+.displayText::-webkit-scrollbar {display:none}
 
 .btn-calc,
 .btn-calc:focus,
@@ -114,7 +123,7 @@ a {
 .calu-w3ls,
 .calu-w3ls:focus {
     /* background: #292929 !important; */
-    background: #292929;
+    background: #777;
     color: #e7e7e7;
     width: 62px;
     height: 62px;
@@ -208,9 +217,40 @@ a {
     }
 }
 
+@media(max-width: 2900px) {
+    .displayText {
+        font-size: 20px !important;
+        max-height: 440px;
+        min-width: 100%;
+    }
+}
+
+/* anlzou */
+@media(max-width: 800px) {
+    .displayText {
+        font-size: 24px !important;
+        max-height: 500px;
+    }
+}
+
 @media(max-width: 600px) {
     .displayText {
-        font-size: 50px !important;
+        font-size: 20px !important;
+        max-height: 340px;
+    }
+}
+
+@media(max-width: 360px) {
+    .displayText {
+        font-size: 20px !important;
+        max-height: 160px;
+    }
+}
+
+@media(max-width: 300px) {
+    .displayText {
+        font-size: 20px !important;
+        max-height: 40px;
     }
 }
 
@@ -255,6 +295,7 @@ a {
     .equals:focus {
         height: 62px;
     } 
+
 }
 
 /* //responsive */
