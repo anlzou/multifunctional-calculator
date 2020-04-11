@@ -199,7 +199,7 @@ $(document).ready(function () {
   };
 
   // 选择排列
-  function AAA(array, M) {
+  function groups(array, M) {
     var N = array.length;
     var top = 0, queue = [], flag = [], arr = [], _arr = [];
     function comb(s, n, m) {
@@ -226,19 +226,43 @@ $(document).ready(function () {
 
   // 控制输出长度 $001
   function PrefixInteger(num, length) {
-    return (Array(length).join('0') + num).slice(-length);
+    return (Array(length).join('⁰') + num).slice(-length);
   }
+  function show(list) {
+    let k = 1;
+    let p;
+    let l = (list.length).toString().length;
+    for (let i in list) {
+      p = k;
+      p = p.toString();
+      // text1 = text1.replace(new RegExp(text2, 'g'), "");
+      p = p.replace(new RegExp("0", 'g'), "⁰");
+      p = p.replace(new RegExp("1", 'g'), "¹");
+      p = p.replace(new RegExp("2", 'g'), "²");
+      p = p.replace(new RegExp("3", 'g'), "³");
+      p = p.replace(new RegExp("4", 'g'), "⁴");
+      p = p.replace(new RegExp("5", 'g'), "⁵");
+      p = p.replace(new RegExp("6", 'g'), "⁶");
+      p = p.replace(new RegExp("7", 'g'), "⁷");
+      p = p.replace(new RegExp("8", 'g'), "⁸");
+      p = p.replace(new RegExp("9", 'g'), "⁹");
+      displayText.innerHTML += "$" + PrefixInteger(p, l) + " [" + list[i] + "]<br/>";
+      k = k + 1;
+    }
+    return;
+  }
+
+  var can_delete = 0;
 
   // anlzou 运算功能
   $('#equals').click(function () {
-    if (displayBox.innerHTML.indexOf(",") == -1) {
+    if (displayBox.innerHTML.indexOf(",") == -1) {//普通计算功能
       evaluate();
       hasEvaluated = true;
       displayText.innerHTML = displayBox.innerHTML;
-    } else {
+    } else {//组合功能
       let list;
       let regx1 = /[0-9]+/g;
-      let regx2 = /\,\,/g;
       let mytext = displayBox.innerHTML;
       let index = mytext.indexOf(",");
       //判断开头
@@ -249,30 +273,75 @@ $(document).ready(function () {
         let m = mytext.substring(index, mytext.length);
         m = m.match(regx1)[0];
         displayText.innerHTML = m;
-
         Number(m);
-        if (index != -1) {
+        if (index != -1) {//有,,
           let text2 = mytext.substring(0, index);
           list = text2.match(regx1);
-          list = AAA(list, m);
-          console.log(list);
+          list = groups(list, m);
+          // console.log(list);
           displayText.innerHTML = "";
-          let k = 1;
-          let l = (list.length).toString().length;
-          for (i in list) {
-            displayText.innerHTML += "$" + PrefixInteger(k, l) + " [" + list[i] + "]<br/>";
-            k = k + 1;
+          if (list == "") {
+            displayText.innerHTML += "error:m>n!"
+            return;
           }
+          show(list);
+        } else {//没有,,
+          // displayText.innerHTML = mytext;
+          list = mytext.match(regx1);
+          displayText.innerHTML = list[1];
+          let array = new Array();
+          if (list[0] > 12) {
+            displayText.innerHTML = "( ఠൠఠ )ﾉCPU会炸di！规定n<13";
+            return;
+          }
+          for (let i = 0; i < list[0]; i++) {
+            array[i] = i + 1;
+          }
+          list = groups(array, list[1]);
+          displayText.innerHTML = "";
+          if (list == "") {
+            displayText.innerHTML += "error:m>n!"
+            return;
+          }
+          show(list);
         }
-        displayText.innerHTML += br + br;
       }
-
-      //,功能
+      displayText.innerHTML += br + br;
+      can_delete = 1;
     }
   });
 
   //anlzou 删除功能
-
+  $('#delete').click(function () {
+    let list;
+    if (can_delete == 0) {
+      displayText.innerHTML = "列表没有可以删除的元素。";
+    } else {
+      can_delete == 1;
+      let regx1 = /[0-9]+/g;
+      let mytext = displayBox.innerHTML;
+      let index = mytext.indexOf(",");
+      //判断开头
+      if (index == 0) {
+        displayText.innerHTML = "“,”不能开头";
+      } else if (index != -1) {//有,
+        let text1 = displayText.innerHTML;
+        let text2 = displayBox.innerHTML;
+        list = text2.match(regx1);
+        // displayText.innerHTML = list;
+        // console.log(list);
+        for (let i of list) {
+          text1 = text1.replace(new RegExp(i, 'g'), "");
+        }
+        displayText.innerHTML = text1;
+      } else {//没有,;直接删除元素
+        let text1 = displayText.innerHTML;
+        let text2 = displayBox.innerHTML;
+        text1 = text1.replace(new RegExp(text2, 'g'), "");
+        displayText.innerHTML = text1;
+      }
+    }
+  });
   //anlzou 重置
   $('#rest').click(function () {
     location.reload();
