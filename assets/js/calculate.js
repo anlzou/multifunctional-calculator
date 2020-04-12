@@ -233,7 +233,7 @@ $(document).ready(function () {
   var btn_end = "<br/><button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'checkall\')\"\>全选\<\/button\>" +
     "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'uncheckall\')\"\>取消\<\/button\>" +
     "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'reversecheck\')\"\>反选\<\/button\>" +
-    "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"xxx()\"\>删除\<\/button\><br/>";
+    "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"deleteSelect()\"\>删除\<\/button\><br/>";
 
   // 集合显示到输出框
   function show(list) {
@@ -304,11 +304,12 @@ $(document).ready(function () {
           list = text2.match(regx1);
           list = groups(list, m);
           // console.log(list);
-          displayText.innerHTML = "";
           if (list == "") {
-            displayText.innerHTML += "error:m>n!"
+            // displayText.innerHTML = "error:m>n!"
+            alert("error:m>n!");
             return;
           }
+          displayText.innerHTML = "";
           show2(list);
         } else {//没有,,
           // displayText.innerHTML = mytext;
@@ -316,18 +317,20 @@ $(document).ready(function () {
           displayText.innerHTML = list[1];
           let array = new Array();
           if (list[0] > 12) {
-            displayText.innerHTML = "( ఠൠఠ )ﾉCPU会炸di！规定n<13";
+            // displayText.innerHTML = "( ఠൠఠ )ﾉCPU会炸di！规定n<13";
+            alert("( ఠൠఠ )ﾉCPU会炸di！规定n<13");
             return;
           }
           for (let i = 0; i < list[0]; i++) {
             array[i] = i + 1;
           }
           list = groups(array, list[1]);
-          displayText.innerHTML = "";
           if (list == "") {
-            displayText.innerHTML += "error:m>n!"
+            // displayText.innerHTML += "error:m>n!"
+            alert("error:m>n!");
             return;
           }
+          displayText.innerHTML = "";
           show2(list);
         }
       }
@@ -336,21 +339,86 @@ $(document).ready(function () {
     }
   });
 
-  // anlzou 删除功能
-
-  //anlzou 删除功能
+  // anlzou 删除功能new
   $('#delete').click(function () {
-    let list;
+    let listT;
+    let listB;
     if (can_delete == 0) {
-      displayText.innerHTML = "列表没有可以删除的元素。";
+      // displayText.innerHTML = "列表没有可以删除的元素。";
+      alert("列表没有可以删除的元素。");
     } else {
-      can_delete == 1;
-      let regx1 = /[0-9]+/g;
+      can_delete = 1;
+      let regxT = /^\s[0-9]+\]$/g;
+      let regxB = /[0-9]+/g;
       let mytext = displayBox.innerHTML;
       let index = mytext.indexOf(",");
       //判断开头
       if (index == 0) {
-        displayText.innerHTML = "“,”不能开头";
+        // displayText.innerHTML = "“,”不能开头";
+        alert("“,”不能开头");
+      } else if (index != -1) {//有,
+        let textT = displayText.innerHTML;
+        let textB = displayBox.innerHTML;
+        listB = textB.match(regxB);
+        listT = textT.match(regxT);
+        let parent = document.getElementById("displayText");
+        for (let i in listT) {//最后问题
+          for (let k in i) {
+            for (let j in listB) {
+              if (listB[j] == listT[i][k]) {
+                var label_d = document.getElementById("label" + i);
+                var checkbox_d = document.getElementById("checkbox" + i);
+                parent.removeChild(label_d);
+                parent.removeChild(checkbox_d);
+              }
+              break;
+            }
+          }
+        }
+      } else {//没有,;直接删除元素
+        let parent = document.getElementById("displayText");
+        // let textT = displayText.innerHTML;
+        let textB = displayBox.innerHTML;
+        var label_d = document.getElementById("label" + textB);
+        var checkbox_d = document.getElementById("checkbox" + textB);
+        parent.removeChild(label_d);
+        parent.removeChild(checkbox_d);
+        // displayText.innerHTML = text1;
+      }
+    }
+  });
+
+  // var objcheckboxList = document.getElementsByName("checkbox");
+  // var parent = document.getElementById("displayText");
+  // var label_id;
+  // var label_del;
+  // if (null != objcheckboxList) {
+  //   for (let i = 0; i < objcheckboxList.length; i++) {
+  //     if (objcheckboxList[i].checked == true) {
+  //       label_id = "label" + objcheckboxList[i].value;
+  //       label_del = document.getElementById(label_id);
+  //       parent.removeChild(label_del);
+  //       parent.removeChild(objcheckboxList[i]);
+  //       i = i - 1;//神奇效果
+  //     }
+  //   }
+  // }
+
+  //anlzou 删除功能
+  $('#delete1').click(function () {
+    let list;
+    if (can_delete == 0) {
+      alert("列表没有可以删除的元素。");
+    } else {
+      can_delete = 1;
+      let regx1 = /[0-9]+/g;
+      // let regx2 = /^\s[0-9]+\]$/g;
+      let mytext = displayBox.innerHTML;
+      let index = mytext.indexOf(",");
+      //判断开头
+      if (index == 0) {
+        // displayText.innerHTML = "“,”不能开头";
+        alert("“,”不能开头");
       } else if (index != -1) {//有,
         let text1 = displayText.innerHTML;
         let text2 = displayBox.innerHTML;
@@ -488,3 +556,20 @@ function opcheckboxed(objName, type) {
   }
 }
 
+function deleteSelect() {
+  var objcheckboxList = document.getElementsByName("checkbox");
+  var parent = document.getElementById("displayText");
+  var label_id;
+  var label_del;
+  if (null != objcheckboxList) {
+    for (let i = 0; i < objcheckboxList.length; i++) {
+      if (objcheckboxList[i].checked == true) {
+        label_id = "label" + objcheckboxList[i].value;
+        label_del = document.getElementById(label_id);
+        parent.removeChild(label_del);
+        parent.removeChild(objcheckboxList[i]);
+        i = i - 1;//神奇效果
+      }
+    }
+  }
+}
