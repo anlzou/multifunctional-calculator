@@ -164,7 +164,7 @@ $(document).ready(function () {
   //   displayBox.innerHTML = Number(num.toFixed(5));
   // });
 
-  // 全排列组合
+  // 全组合排列
   function getGroup(data, index = 0, group = []) {
     var need_apply = new Array();
     need_apply.push(data[index]);
@@ -177,7 +177,7 @@ $(document).ready(function () {
     else return getGroup(data, index + 1, group);
   }
 
-  // 全排列
+  // 全组合
   function permute(input) {
     var permArr = [],
       usedChars = [];
@@ -198,7 +198,7 @@ $(document).ready(function () {
     return main(input);
   };
 
-  // 选择排列
+  // 选择组合
   function groups(array, M) {
     var N = array.length;
     var top = 0, queue = [], flag = [], arr = [], _arr = [];
@@ -226,8 +226,16 @@ $(document).ready(function () {
 
   // 控制输出长度 $001
   function PrefixInteger(num, length) {
-    return (Array(length).join('⁰') + num).slice(-length);
+    return (Array(length).join('0') + num).slice(-length);
   }
+
+  // 输出框按钮
+  var btn_end = "<br/><button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'checkall\')\"\>全选\<\/button\>" +
+    "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'uncheckall\')\"\>取消\<\/button\>" +
+    "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'reversecheck\')\"\>反选\<\/button\>" +
+    "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"xxx()\"\>删除\<\/button\><br/>";
+
+  // 集合显示到输出框
   function show(list) {
     let k = 1;
     let p;
@@ -249,6 +257,23 @@ $(document).ready(function () {
       displayText.innerHTML += "$" + PrefixInteger(p, l) + " [" + list[i] + "]<br/>";
       k = k + 1;
     }
+    displayText.innerHTML += btn_end;
+    return;
+  }
+
+  // <input type="checkbox" name="checkbox" id="checkbox1" value="1">
+  // <label id="label1" for="checkbox1">$01 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+  // 集合显示到输出框
+  function show2(list) {
+    let input_id = 1;
+    let l = (list.length).toString().length;
+    displayText.innerHTML += btn_end;
+    for (let i in list) {
+      displayText.innerHTML += "\<input type\=\"checkbox\" name\=\"checkbox\" id\=\"checkbox" + input_id + "\" value\=\"" + input_id + "\">" +
+        "\<label id\=\"label" + input_id + "\" for\=\"checkbox" + input_id + "\"\>" + "$" + PrefixInteger(input_id, l) + " [" + list[i] + "]" + "\<\/label\>";
+      input_id = input_id + 1;
+    }
+    displayText.innerHTML += btn_end;
     return;
   }
 
@@ -284,7 +309,7 @@ $(document).ready(function () {
             displayText.innerHTML += "error:m>n!"
             return;
           }
-          show(list);
+          show2(list);
         } else {//没有,,
           // displayText.innerHTML = mytext;
           list = mytext.match(regx1);
@@ -303,13 +328,15 @@ $(document).ready(function () {
             displayText.innerHTML += "error:m>n!"
             return;
           }
-          show(list);
+          show2(list);
         }
       }
       displayText.innerHTML += br + br;
       can_delete = 1;
     }
   });
+
+  // anlzou 删除功能
 
   //anlzou 删除功能
   $('#delete').click(function () {
@@ -438,4 +465,26 @@ $(document).ready(function () {
     }
   }
 
+  // anlzou
+  // 代码优化，全选、取消全选、反选
+  // 将选中设置为 checked 或 true， 取消选中可设置为空或 false，实现反选使用 checked 属性会出现问题。
 });
+
+function opcheckboxed(objName, type) {
+  var objNameList = document.getElementsByName(objName);
+  if (null != objNameList) {
+    for (var i = 0; i < objNameList.length; i++) {
+      if (objNameList[i].checked == true) {
+        if (type != 'checkall') {  // 非全选
+          objNameList[i].checked = false;
+        }
+
+      } else {
+        if (type != 'uncheckall') {  // 非取消全选
+          objNameList[i].checked = true;
+        }
+      }
+    }
+  }
+}
+

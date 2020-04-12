@@ -1829,7 +1829,8 @@
 		display: inline-block;
 		font-weight: 700;
 		height: 3em;
-		line-height: 3em;
+		/* 按钮文字居中 */
+		line-height: 2em;
 		padding: 0 2.5em;
 		text-align: center;
 		text-decoration: none;
@@ -2102,7 +2103,7 @@
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;
-			font-weight: 300;
+			font-weight: 600;
 			padding-left: 2.4em;
 			padding-right: 0.75em;
 			position: relative;
@@ -3380,7 +3381,7 @@
 		#banner input[type="button"],
 		#banner button,
 		#banner .button {
-			background-color: #1abc9c;
+			background-color: #4d4d4d;
 			color: #fff !important;
 		}
 
@@ -3477,14 +3478,14 @@
 			#banner input[type="checkbox"] + label:before,
 			#banner input[type="radio"] + label:before {
 				background: rgba(255, 255, 255, 0.075);
-				border-color: rgba(255, 255, 255, 0.25);
+				border-color: rgba(30, 5, 5, 0.25);
 			}
 
 		#banner input[type="checkbox"]:checked + label:before,
 		#banner input[type="radio"]:checked + label:before {
-			background-color: #fff;
-			border-color: #fff;
-			color: #3498db;
+			background-color: #5f4e4e;
+			border-color: #fff56f;
+			color: #f90000;
 		}
 
 		#banner input[type="checkbox"]:focus + label:before,

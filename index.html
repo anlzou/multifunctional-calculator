@@ -2,7 +2,7 @@
  * @Date        : 2020-04-10 16:39:14
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-04-11 20:21:52
+ * @LastEditTime: 2020-04-12 14:46:40
  * @FilePath    : \CalculatorWidget\index.html
  * @Describe    : 
  -->
@@ -19,14 +19,6 @@
 </head>
 
 <body>
-	<!-- Header -->
-	<!-- <header id="header">
-		<a class="logo"><strong style="color: rgb(205, 212, 218);">组合-计算器</strong></a>
-		<nav>
-			<a href="#menu">功能</a>
-		</nav>
-	</header> -->
-
 	<!-- Header -->
 	<header id="header">
 		<a href="index.html" class="logo"><strong>Assemble-Calculator</strong></a>
@@ -50,36 +42,68 @@
 		<div class="inner">
 			<div class="displayBox">
 				<p class="displayText" id="displayText">
-					$01 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$02 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$03 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$04 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$05 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$06 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$07 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$08 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$09 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$10 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$11 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$12 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$13 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$14 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$15 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					$16 [0,1,2,3,4,5,6,7,8,9,10,11] <br />
-					<br>
-					end.
-					<br>
-					<br>
-					<br>
-					<br>
-					end..
+					<!-- 全选，取消，反选，删除 -->
+					<button class="btn_color4 btn calu-w3ls hvr-back-pulse btn_ "
+						onclick="opcheckboxed('checkbox', 'checkall')">全选</button>
+					<button class="btn_color4 btn calu-w3ls hvr-back-pulse btn_ "
+						onclick="opcheckboxed('checkbox', 'uncheckall')">取消</button>
+					<button class="btn_color4 btn calu-w3ls hvr-back-pulse btn_ "
+						onclick="opcheckboxed('checkbox', 'reversecheck')">反选</button>
+					<button class="btn_color4 btn calu-w3ls hvr-back-pulse " onclick="">删除</button>
+					<br />
+					<input type="checkbox" name="checkbox" id="checkbox1" value="1">
+					<label id="label1" for="checkbox1">$01 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox2" value="2">
+					<label id="label2" for="checkbox2">$02 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox3" value="3">
+					<label id="label3" for="checkbox3">$03 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox4" value="4">
+					<label id="label4" for="checkbox4">$04 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox5" value="5">
+					<label id="label5" for="checkbox5">$05 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox6" value="6">
+					<label id="label6" for="checkbox6">$06 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox7" value="7">
+					<label id="label7" for="checkbox7">$07 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox8" value="8">
+					<label id="label8" for="checkbox8">$08 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox9" value="9">
+					<label id="label9" for="checkbox9">$09 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox10" value="0">
+					<label id="label10" for="checkbox10">$10 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+
+					<input type="checkbox" name="checkbox" id="checkbox11" value="11">
+					<label id="label11" for="checkbox11">$11 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
+					<br />
+					<!-- 全选，取消，反选，删除 -->
+					<button class="btn_color4 btn calu-w3ls hvr-back-pulse btn_"
+						onclick="opcheckboxed('checkbox', 'checkall')">全选</button>
+					<button class="btn_color4 btn calu-w3ls hvr-back-pulse btn_"
+						onclick="opcheckboxed('checkbox', 'uncheckall')">取消</button>
+					<button class="btn_color4 btn calu-w3ls hvr-back-pulse btn_"
+						onclick="opcheckboxed('checkbox', 'reversecheck')">反选</button>
+					<button class="btn_color4 btn calu-w3ls hvr-back-pulse " onclick="">删除</button>
+					<br />
+					<label for="">页面太小请打开浏览器全屏使用。</label>
+					<br />
+					<br />
+					<br />
+					<br />
 			</div>
 		</div>
 	</section>
 
 	<!-- Footer -->
 	<footer id="footer">
-		<!-- <input type="text" class="inputText" style="color: aliceblue;" id="display"> -->
 		<h1 class="inputText" style="color: aliceblue;" id="display">0</h1>
 		<div class="content" style="background-color:rgb(114, 111, 108); text-align: center;">
 			<div class="left-count inner">
@@ -87,7 +111,6 @@
 					<button class="btn calu-w3ls hvr-back-pulse" id="calu-w3ls">C</button>
 					<button class="btn calu-w3ls hvr-back-pulse calu_sapce" id="delete">D</button>
 					<button class="btn calu-w3ls hvr-back-pulse" id="back">B</button>
-					<!-- <button id="remainder" class="btn calu-w3ls hvr-back-pulse">%</button> -->
 					<button id="divide" class="btn calu-w3ls hvr-back-pulse  calu_">÷</button>
 
 				</div>
