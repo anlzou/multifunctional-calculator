@@ -294,7 +294,8 @@ $(document).ready(function () {
       let index = mytext.indexOf(",");
       //判断开头
       if (index == 0) {
-        displayText.innerHTML = "“,”不能开头";
+        // displayText.innerHTML = "“,”不能开头";
+        alert("“ , ”不能开头");
       } else {//,,功能
         index = mytext.indexOf(",,");
         let m = mytext.substring(index, mytext.length);
@@ -341,6 +342,16 @@ $(document).ready(function () {
     }
   });
 
+  //是否被包含,是返回true,不是返回false
+  isContained = (a, b) => {
+    if (!(a instanceof Array) || !(b instanceof Array)) return false;
+    if (a.length < b.length) return false;
+    var aStr = a.toString();
+    for (var i = 0, len = b.length; i < len; i++) {
+      if (aStr.indexOf(b[i]) == -1) return false;
+    }
+    return true;
+  }
   // anlzou 删除功能new
   $('#delete').click(function () {
     let listT;
@@ -348,6 +359,7 @@ $(document).ready(function () {
     if (can_delete == 0) {
       // displayText.innerHTML = "列表没有可以删除的元素。";
       alert("列表没有可以删除的元素。");
+      return;
     } else {
       can_delete = 1;
       let regxT = /^\[.*\]$/g;
@@ -361,21 +373,24 @@ $(document).ready(function () {
         return;
       } else if (index != -1) {//有,
         let textB = displayBox.innerHTML;
-        listB = textB.match(regxB);
-        let k;
-        for (let i = 0; i < arr2serch.length; i++) {
-          for (let j in arr2serch[i]) {
-            for (let k in listB) {
-              if (Number(listB[k]) == arr2serch[i][j]) {
-                k = i + 1;
-                let parent = document.getElementById("displayText");
-                var label_d = document.getElementById("label" + k);
-                var checkbox_d = document.getElementById("checkbox" + k);
-                if (label_d) {
-                  parent.removeChild(label_d);
-                  parent.removeChild(checkbox_d);
-                }
-              }
+        let listB = textB.match(regxB);
+        let numListB = new Array();
+        // console.log(listB);
+        let q = 0;
+        for (let i in listB) {
+          numListB.push(Number(listB[i]));
+        }
+        // console.log(numListB);
+        for (let i in arr2serch) {
+          if (isContained(arr2serch[i], numListB)) {
+            q = Number(i) + 1;
+            console.log(q);
+            let parent = document.getElementById("displayText");
+            var label_d = document.getElementById("label" + q);
+            var checkbox_d = document.getElementById("checkbox" + q);
+            if (label_d) {
+              parent.removeChild(label_d);
+              parent.removeChild(checkbox_d);
             }
           }
         }
@@ -388,7 +403,7 @@ $(document).ready(function () {
         let k;
         for (let i = 0; i < arr2serch.length; i++) {
           for (let j in arr2serch[i]) {
-            console.log(textB);
+            // console.log(textB);
             if (Number(textB) == arr2serch[i][j]) {
               k = i + 1;
               let parent = document.getElementById("displayText");
@@ -405,7 +420,7 @@ $(document).ready(function () {
     }
   });
 
-  //anlzou 删除功能
+  //anlzou 删除功能，第一、二版功能
   $('#delete1').click(function () {
     let list;
     if (can_delete == 0) {
@@ -452,7 +467,7 @@ $(document).ready(function () {
       "\<h4\>功能用法\<\/h4\>" + "1、输入任意多个数值，数值之间用" + "“" + " , " + "”" + "逗号按钮(连续数量&ge;1)隔开，" + "不能使用" + "“ , ”" + "逗号开头" + "<br/>" + tab + "例如：11,6&nbsp;表示从1到11中选6个的组合<br/>" + tab +
       "例如：0,1,5,6,2,6,,3&nbsp;表示从{0,1,5,6,2}中选3个的组合<br/>" + tab + "如果都只有一个" + "“" + " , " + "”" +
       "则取第一个(n,m)做组合运算，忽略m后面的值；<br/>" + tab + "如果存在连续的逗号大于1个，则取第一个连续逗号前面的所有数为集合n，选连续逗号后面的值为m进行组合运算，忽略m后面的值。" + "<br/>2、点击" + "“" + " = " + "”" +
-      "按钮进行组合运算<br/>3、点击" + "D(delete)使用输入框中的数进行列表元素删除<br/>" + tab + "运算与删除的元素不能使用" + "“ , ”" + "逗号开头，多个元素之间用逗号(连续数量&ge;1)隔开。<br/>4、普通计算可使用(+-×÷)功能。<br/><br/>" +
+      "按钮进行组合运算<br/>3、点击" + "D(delete)删除同时含有输入框中的数的列表<br/>" + tab + "运算与删除的元素不能使用" + "“ , ”" + "逗号开头，多个元素之间用逗号(连续数量&ge;1)隔开。<br/>4、普通计算可使用(+-×÷)功能。<br/><br/>" +
       "\<h4\>变量限定\<\/h4\>" + "1、输入框的字符串长度为24。<br/>" + "2、C(n,m)中规定0&le;n,m&le;13。<br/><br/>" + "\<h4\>其它\<\/h4\>根据处理器、浏览器性能不同，输入的值太大会卡顿，比如n=11,m=6，等待2秒左右即可。<br/>版本更新算法改进。" + br;
     document.getElementById("displayText").innerHTML = displayText;
   });
@@ -471,6 +486,11 @@ $(document).ready(function () {
 
   $('#author').click(function () {
     let displayText = "作者：anlzou<br/>QQ：599502931<br/><br/>Bug反馈，交流学习...";
+    document.getElementById("displayText").innerHTML = displayText;
+  });
+
+  $('#version').click(function () {
+    let displayText = "\<h4\>2020年4月13日\<\/h4\>v3.00<br/>1、普通计算功能<br/>2、组合计算+删除功能";
     document.getElementById("displayText").innerHTML = displayText;
   });
 
@@ -577,5 +597,36 @@ function deleteSelect() {
         i = i - 1;//神奇效果
       }
     }
+  }
+}
+
+function copy() {
+  var objcheckboxList = document.getElementsByName("checkbox");
+  var label_id;
+  var label_del;
+  var copy_text = "";
+  if (null != objcheckboxList) {
+    for (let i = 0; i < objcheckboxList.length; i++) {
+      if (objcheckboxList[i].checked == true) {
+        label_id = "label" + objcheckboxList[i].value;
+        label_del = document.getElementById(label_id);
+        copy_text += label_del.innerHTML + "\t";
+      }
+    }
+    const input = document.createElement('input');
+    document.body.appendChild(input);
+    input.setAttribute('value', copy_text)
+    input.setAttribute('readonly', 'readonly');
+    input.select();
+    input.setSelectionRange(0, 9999); // 如果select 没有选择到
+    document.execCommand('copy');
+    // if (document.execCommand('copy')) {
+    //   this.$message({
+    //     type: 'success',
+    //     message: '报文已复制到剪切板'
+    //   })
+    // }
+    document.body.removeChild(input);
+    // console.log(copy_text);
   }
 }
