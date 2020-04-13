@@ -75,7 +75,7 @@ a {
 }
 
 .btn-calc:hover {
-    background: #e7e7e7;
+    background: #b9a9a9;
     color: #455A64;
     -webkit-transition: 0.5s all;
     -o-transition: 0.5s all;
@@ -83,6 +83,60 @@ a {
     -ms-transition: 0.5s all;
     transition: 0.5s all;
 }
+
+.btn-calc:active {
+    background-color: #1abc9c;
+    color: #455A64;
+    -webkit-transition: 0.3s all;
+    -o-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+    transition: 0.3s all;
+}
+
+/* 全选、反选、取消、删除 */
+/* .btn_color4{
+    font-weight: 200;
+    background: rgba(255, 255, 255, 0.17);
+    color: #e7e7e7;
+    width: 62px;
+    height: 62px;
+    border-radius: 100px;
+    border: none;
+    margin: 6px 10px;
+    box-shadow: 2px 3px 5px 1px rgba(0, 0, 0, 0.16);
+} */
+/* .btn_color4:focus {
+    background: rgba(255, 255, 255, 0.17);
+    color: #e7e7e7;
+    width: 62px;
+    height: 62px;
+    border-radius: 100px;
+    border: none;
+    margin: 6px 10px;
+    box-shadow: 2px 3px 5px 1px rgba(0, 0, 0, 0.16);
+} */
+
+/* .btn_color4:hover {
+    background: #b9a9a9;
+    color: #455A64;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+} */
+
+/* .btn_color4:active {
+    background-color: #1abc9c;
+    color: #455A64;
+    -webkit-transition: 0.3s all;
+    -o-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+    transition: 0.3s all;
+} */
+
 
 .btn-operation {
     background: 0 0;
@@ -142,6 +196,18 @@ a {
     -ms-transition: 0.5s all;
     transition: 0.5s all;
 }
+
+.calu-w3ls:active {
+    background: #168372;
+    color: rgb(194, 113, 60);
+    -webkit-transition: 0.3s all;
+    -o-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    -ms-transition: 0.3s all;
+    transition: 0.3s all;
+}
+
+
 
 .equals,
 .equals:focus {
@@ -261,7 +327,7 @@ a {
     .calu-w3ls:focus {
         width: 50px;
         height: 50px;
-        margin: 6px 7px;
+        margin: 6px 10px;
     }
     .btn-operation {
         height: 65px;
