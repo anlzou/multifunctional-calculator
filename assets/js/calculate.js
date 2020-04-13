@@ -443,14 +443,17 @@ $(document).ready(function () {
     location.reload();
   });
 
+  var tab = "&nbsp;&nbsp;&nbsp;&nbsp;";
   // anlzou nav
   $('#what').click(function () {
-    let displayText = "##基本按钮" + "<br/>" + "C(cls)：清理输入框。" + "<br/>" + "D(delete)：使用输入框中的元素删除组合列表中的对应元素。" + "<br/>" +
-      "B(back)：输入框退格。" + "<br/>" + "R(reset,已经删除)：重置组合运算公式；与F5刷新、点击" + "“" + "Assemble-Calculator”"
-      + "logo等同功能。" + "<br/><br/>" + "##功能用法" + "<br/>" + "1、输入任意多个数值，数值之间用" + "“" + "," + "”" + "按钮(,&ge;1)隔开；<br/>2、如果只有一个" + "“" + "," + "”" +
-      "则取第一个(n,m)做组合运算，如果连续的逗号大于1个，则取第一个连续逗号前面的所有数为集合n，选连续逗号后面的值为m进行组合运算。" + "<br/>3、点击" + "“" + "=" + "”" +
-      "按钮进行组合运算；<br/>4、点击" + "D(delete)使用输入框中的数进行列表元素删除。<br/>删除的元素不能使用逗号(,)开头,多个元素之间用逗号隔开。<br/>5、普通计算可使用(+-×÷)功能。<br/><br/>" +
-      "##变量限定<br/>" + "1、输入框的字符串长度为24。<br/>" + "2、C(n,m)中规定0&le;n,m&le;13。" + br;
+    let displayText = "\<h4\>组合函数\<\/h4\>" + "组合函数C(n,m)，表示在n个数中选m个数，或者在集合n中选m个数，所以m&le;n的数量。<br/><br/>" + "\<h4\>基本按钮\<\/h4\>" + "C(cls)：清理输入框。" + "<br/>" + "D(delete)：使用输入框中的元素删除组合列表中的对应元素。" + "<br/>" +
+      "B(back)：输入框退格。" + "<br/>" + "R(reset,已经删除)：重置组合运算公式；与F5刷新、点击" + "“" + " Assemble-Calculator ”"
+      + "logo等同功能。" + "<br/><br/>" +
+      "\<h4\>功能用法\<\/h4\>" + "1、输入任意多个数值，数值之间用" + "“" + " , " + "”" + "逗号按钮(连续数量&ge;1)隔开，" + "不能使用" + "“ , ”" + "逗号开头" + "<br/>" + tab + "例如：11,6&nbsp;表示从1到11中选6个的组合<br/>" + tab +
+      "例如：0,1,5,6,2,6,,3&nbsp;表示从{0,1,5,6,2}中选3个的组合<br/>" + tab + "如果都只有一个" + "“" + " , " + "”" +
+      "则取第一个(n,m)做组合运算，忽略m后面的值；<br/>" + tab + "如果存在连续的逗号大于1个，则取第一个连续逗号前面的所有数为集合n，选连续逗号后面的值为m进行组合运算，忽略m后面的值。" + "<br/>2、点击" + "“" + " = " + "”" +
+      "按钮进行组合运算<br/>3、点击" + "D(delete)使用输入框中的数进行列表元素删除<br/>" + tab + "运算与删除的元素不能使用" + "“ , ”" + "逗号开头，多个元素之间用逗号(连续数量&ge;1)隔开。<br/>4、普通计算可使用(+-×÷)功能。<br/><br/>" +
+      "\<h4\>变量限定\<\/h4\>" + "1、输入框的字符串长度为24。<br/>" + "2、C(n,m)中规定0&le;n,m&le;13。<br/><br/>" + "\<h4\>其它\<\/h4\>根据处理器、浏览器性能不同，输入的值太大会卡顿，比如n=11,m=6，等待2秒左右即可。<br/>版本更新算法改进。" + br;
     document.getElementById("displayText").innerHTML = displayText;
   });
 
@@ -460,7 +463,9 @@ $(document).ready(function () {
   });
 
   $('#explain').click(function () {
-    let displayText = "本软件版权归作者所有，开源仓库github.com/anlzou、gitee.com/anlzou。";
+    let displayText = "本软件版权归作者所有，开源仓库\<a style\=\"color\: greenyellow\;\" href\=\"https\:\/\/github\.com\/anlzou\"\>https\:\/\/github\.com\/anlzou\<\/a\>" + "、" +
+      "\<a style\=\"color\: greenyellow\;\" href\=\"https\:\/\/gitee\.com\/anlzou\"\>https\:\/\/gitee\.com\/anlzou\<\/a\>" +
+      "<br/>已开启 Gitee Pages 服务，网站地址： \<a style\=\"color\: greenyellow\;\" href\=\"https\:\/\/anlzou\.gitee\.io\/calculatorwidget\"\>calculatorwidget\<\/a\>";
     document.getElementById("displayText").innerHTML = displayText;
   });
 
