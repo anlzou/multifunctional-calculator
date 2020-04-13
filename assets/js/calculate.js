@@ -405,22 +405,6 @@ $(document).ready(function () {
     }
   });
 
-  // var objcheckboxList = document.getElementsByName("checkbox");
-  // var parent = document.getElementById("displayText");
-  // var label_id;
-  // var label_del;
-  // if (null != objcheckboxList) {
-  //   for (let i = 0; i < objcheckboxList.length; i++) {
-  //     if (objcheckboxList[i].checked == true) {
-  //       label_id = "label" + objcheckboxList[i].value;
-  //       label_del = document.getElementById(label_id);
-  //       parent.removeChild(label_del);
-  //       parent.removeChild(objcheckboxList[i]);
-  //       i = i - 1;//神奇效果
-  //     }
-  //   }
-  // }
-
   //anlzou 删除功能
   $('#delete1').click(function () {
     let list;
