@@ -198,6 +198,7 @@ $(document).ready(function () {
     return main(input);
   };
 
+  var arr2serch;
   // 选择组合
   function groups(array, M) {
     var N = array.length;
@@ -221,6 +222,7 @@ $(document).ready(function () {
       comb(s + 1, n, m);
     }
     comb(0, N, M);
+    arr2serch = arr;
     return arr
   }
 
@@ -270,7 +272,7 @@ $(document).ready(function () {
     displayText.innerHTML += btn_end;
     for (let i in list) {
       displayText.innerHTML += "\<input type\=\"checkbox\" name\=\"checkbox\" id\=\"checkbox" + input_id + "\" value\=\"" + input_id + "\">" +
-        "\<label id\=\"label" + input_id + "\" for\=\"checkbox" + input_id + "\"\>" + "$" + PrefixInteger(input_id, l) + " [" + list[i] + "]" + "\<\/label\>";
+        "\<label name\=\"label\" id\=\"label" + input_id + "\" for\=\"checkbox" + input_id + "\"\>" + "$" + PrefixInteger(input_id, l) + " [" + list[i] + "]" + "\<\/label\>";
       input_id = input_id + 1;
     }
     displayText.innerHTML += btn_end;
@@ -348,7 +350,7 @@ $(document).ready(function () {
       alert("列表没有可以删除的元素。");
     } else {
       can_delete = 1;
-      let regxT = /^\s[0-9]+\]$/g;
+      let regxT = /^\[.*\]$/g;
       let regxB = /[0-9]+/g;
       let mytext = displayBox.innerHTML;
       let index = mytext.indexOf(",");
@@ -356,34 +358,49 @@ $(document).ready(function () {
       if (index == 0) {
         // displayText.innerHTML = "“,”不能开头";
         alert("“,”不能开头");
+        return;
       } else if (index != -1) {//有,
-        let textT = displayText.innerHTML;
         let textB = displayBox.innerHTML;
         listB = textB.match(regxB);
-        listT = textT.match(regxT);
-        let parent = document.getElementById("displayText");
-        for (let i in listT) {//最后问题
-          for (let k in i) {
-            for (let j in listB) {
-              if (listB[j] == listT[i][k]) {
-                var label_d = document.getElementById("label" + i);
-                var checkbox_d = document.getElementById("checkbox" + i);
-                parent.removeChild(label_d);
-                parent.removeChild(checkbox_d);
+        let k;
+        for (let i = 0; i < arr2serch.length; i++) {
+          for (let j in arr2serch[i]) {
+            for (let k in listB) {
+              if (Number(listB[k]) == arr2serch[i][j]) {
+                k = i + 1;
+                let parent = document.getElementById("displayText");
+                var label_d = document.getElementById("label" + k);
+                var checkbox_d = document.getElementById("checkbox" + k);
+                if (label_d) {
+                  parent.removeChild(label_d);
+                  parent.removeChild(checkbox_d);
+                }
               }
-              break;
             }
           }
         }
       } else {//没有,;直接删除元素
-        let parent = document.getElementById("displayText");
-        // let textT = displayText.innerHTML;
+        if (displayText.innerHTML == "") {
+          alert("没有数据！");
+          return;
+        }
         let textB = displayBox.innerHTML;
-        var label_d = document.getElementById("label" + textB);
-        var checkbox_d = document.getElementById("checkbox" + textB);
-        parent.removeChild(label_d);
-        parent.removeChild(checkbox_d);
-        // displayText.innerHTML = text1;
+        let k;
+        for (let i = 0; i < arr2serch.length; i++) {
+          for (let j in arr2serch[i]) {
+            console.log(textB);
+            if (Number(textB) == arr2serch[i][j]) {
+              k = i + 1;
+              let parent = document.getElementById("displayText");
+              var label_d = document.getElementById("label" + k);
+              var checkbox_d = document.getElementById("checkbox" + k);
+              if (label_d) {
+                parent.removeChild(label_d);
+                parent.removeChild(checkbox_d);
+              }
+            }
+          }
+        }
       }
     }
   });
