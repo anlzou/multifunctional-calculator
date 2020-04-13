@@ -235,7 +235,8 @@ $(document).ready(function () {
   var btn_end = "<br/><button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'checkall\')\"\>全选\<\/button\>" +
     "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'uncheckall\')\"\>取消\<\/button\>" +
     "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"opcheckboxed(\'checkbox\'\, \'reversecheck\')\"\>反选\<\/button\>" +
-    "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"deleteSelect()\"\>删除\<\/button\><br/>";
+    "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"deleteSelect()\"\>删除\<\/button\>" +
+    "<button class\=\"btn calu-w3ls hvr-back-pulse btn_\" onclick\=\"copy()\"\>复制\<\/button\><br/>";
 
   // 集合显示到输出框
   function show(list) {
@@ -610,7 +611,7 @@ function copy() {
       if (objcheckboxList[i].checked == true) {
         label_id = "label" + objcheckboxList[i].value;
         label_del = document.getElementById(label_id);
-        copy_text += label_del.innerHTML + "\t";
+        copy_text += label_del.innerHTML + "\t\t";
       }
     }
     const input = document.createElement('input');
