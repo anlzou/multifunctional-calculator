@@ -469,7 +469,7 @@ $(document).ready(function () {
       "例如：0,1,5,6,2,6,,3&nbsp;表示从{0,1,5,6,2}中选3个的组合<br/>" + tab + "如果都只有一个" + "“" + " , " + "”" +
       "则取第一个(n,m)做组合运算，忽略m后面的值；<br/>" + tab + "如果存在连续的逗号大于1个，则取第一个连续逗号前面的所有数为集合n，选连续逗号后面的值为m进行组合运算，忽略m后面的值。" + "<br/>2、点击" + "“" + " = " + "”" +
       "按钮进行组合运算<br/>3、点击" + "D(delete)删除同时含有输入框中的数的列表<br/>" + tab + "运算与删除的元素不能使用" + "“ , ”" + "逗号开头，多个元素之间用逗号(连续数量&ge;1)隔开。<br/>4、普通计算可使用(+-×÷)功能。<br/><br/>" +
-      "\<h4\>变量限定\<\/h4\>" + "1、输入框的字符串长度为24。<br/>" + "2、C(n,m)中规定0&le;n,m&le;13。<br/><br/>" + "\<h4\>其它\<\/h4\>根据处理器、浏览器性能不同，输入的值太大会卡顿，比如n=11,m=6，等待2秒左右即可。<br/>版本更新算法改进。" + br;
+      "\<h4\>变量限定\<\/h4\>" + "1、输入框的字符串长度为29，存在“ , ”逗号小于29。<br/>" + "2、C(n,m)中规定0&le;n,m&le;12。<br/><br/>" + "\<h4\>其它\<\/h4\>根据处理器、浏览器性能不同，输入的值太大会卡顿，比如n=12,m=6，等待2秒左右即可。<br/>版本更新算法改进。" + br;
     document.getElementById("displayText").innerHTML = displayText;
   });
 
@@ -540,7 +540,7 @@ $(document).ready(function () {
     if (num.toString().length > 7 && num.toString().length < 14) {
       $("#display").css("font-size", "60px");
       // $("#display").css("margin-top", "174px");
-    } else if (num.toString().length >= 24 - 1) {
+    } else if (num.toString().length >= 24 + 4) {
       num = "Infinity";
       $("button").prop("disabled", true);
       $(".calu-w3ls").attr("disabled", false);
