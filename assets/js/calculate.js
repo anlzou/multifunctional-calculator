@@ -268,6 +268,7 @@ $(document).ready(function () {
   // <label id="label1" for="checkbox1">$01 [0,1,2,3,4,5,6,7,8,9,10,11]</label>
   // 集合显示到输出框
   function show2(list) {
+    rows_delete = 0;
     let input_id = 1;
     let l = (list.length).toString().length;
     displayText.innerHTML += btn_end;
@@ -277,6 +278,8 @@ $(document).ready(function () {
       input_id = input_id + 1;
     }
     displayText.innerHTML += btn_end;
+    data_rows = input_id - 1;
+    displayText.innerHTML += "\<label id=\"data_row\"\>" + "总共:" + data_rows + "条数据&nbsp;&nbsp;删除:" + 0 + "条数据&nbsp;&nbsp;剩余:" + data_rows + "条数据" + "\<\/label\>";
     return;
   }
 
@@ -353,10 +356,12 @@ $(document).ready(function () {
     }
     return true;
   }
+
+  // rows_delete = 0;
+  // data_rows = 0;
+
   // anlzou 删除功能new
   $('#delete').click(function () {
-    let listT;
-    let listB;
     if (can_delete == 0) {
       // displayText.innerHTML = "列表没有可以删除的元素。";
       alert("列表没有可以删除的元素。");
@@ -385,13 +390,17 @@ $(document).ready(function () {
         for (let i in arr2serch) {
           if (isContained(arr2serch[i], numListB)) {
             q = Number(i) + 1;
-            console.log(q);
+            // console.log(q);
             let parent = document.getElementById("displayText");
             var label_d = document.getElementById("label" + q);
             var checkbox_d = document.getElementById("checkbox" + q);
+            var label_data_d = document.getElementById("data_row");
+            // console.log(rows_delete);
             if (label_d) {
               parent.removeChild(label_d);
               parent.removeChild(checkbox_d);
+              rows_delete = rows_delete + 1;
+              label_data_d.innerHTML = "总共:" + data_rows + "条数据&nbsp;&nbsp;删除:" + rows_delete + "条数据&nbsp;&nbsp;剩余:" + (data_rows - rows_delete) + "条数据";
             }
           }
         }
@@ -410,9 +419,13 @@ $(document).ready(function () {
               let parent = document.getElementById("displayText");
               var label_d = document.getElementById("label" + k);
               var checkbox_d = document.getElementById("checkbox" + k);
+              var label_data_d = document.getElementById("data_row");
               if (label_d) {
                 parent.removeChild(label_d);
                 parent.removeChild(checkbox_d);
+                rows_delete = rows_delete + 1;
+                // console.log(rows_delete + " " + data_rows)
+                label_data_d.innerHTML = "总共:" + data_rows + "条数据&nbsp;&nbsp;删除:" + rows_delete + "条数据&nbsp;&nbsp;剩余:" + (data_rows - rows_delete) + "条数据";
               }
             }
           }
@@ -491,7 +504,8 @@ $(document).ready(function () {
   });
 
   $('#version').click(function () {
-    let displayText = "\<h4\>2020年4月13日\<\/h4\>v3.00<br/>1、普通计算功能<br/>2、组合计算+删除功能";
+    let displayText = "\<h4\>2020年4月13日\<\/h4\>v3.00<br/>1、普通计算功能<br/>2、组合计算+删除功能\<br\/\>\<br\/\>" +
+      "\<h4\>2020年4月16日\<\/h4\>v3.10<br/>1、删除数据实时统计显示<br/>2、复制成功弹出提醒";
     document.getElementById("displayText").innerHTML = displayText;
   });
 
@@ -586,8 +600,10 @@ function opcheckboxed(objName, type) {
 function deleteSelect() {
   var objcheckboxList = document.getElementsByName("checkbox");
   var parent = document.getElementById("displayText");
+  var label_data_d = document.getElementById("data_row");
   var label_id;
   var label_del;
+  // rows_delete = 0;
   if (null != objcheckboxList) {
     for (let i = 0; i < objcheckboxList.length; i++) {
       if (objcheckboxList[i].checked == true) {
@@ -596,8 +612,10 @@ function deleteSelect() {
         parent.removeChild(label_del);
         parent.removeChild(objcheckboxList[i]);
         i = i - 1;//神奇效果
+        rows_delete = rows_delete + 1;
       }
     }
+    label_data_d.innerHTML = "总共:" + data_rows + "条数据&nbsp;&nbsp;删除:" + rows_delete + "条数据&nbsp;&nbsp;剩余:" + (data_rows - rows_delete) + "条数据";
   }
 }
 
@@ -606,12 +624,14 @@ function copy() {
   var label_id;
   var label_del;
   var copy_text = "";
+  var copy_rows = 0;
   if (null != objcheckboxList) {
     for (let i = 0; i < objcheckboxList.length; i++) {
       if (objcheckboxList[i].checked == true) {
         label_id = "label" + objcheckboxList[i].value;
         label_del = document.getElementById(label_id);
         copy_text += label_del.innerHTML + "\t\t";
+        copy_rows = copy_rows + 1;
       }
     }
     const input = document.createElement('input');
@@ -629,5 +649,9 @@ function copy() {
     // }
     document.body.removeChild(input);
     // console.log(copy_text);
+    alert("已经复制" + copy_rows + "条数据到粘贴板。");
   }
 }
+
+var rows_delete = 0;
+var data_rows = 11;
