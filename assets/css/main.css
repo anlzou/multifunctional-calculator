@@ -4559,7 +4559,8 @@
 		text-align: center;
 
 		/* anlzou */
-		position:absolute;
+		/* position:absolute; */
+		position: sticky;
 		bottom:0;
 		width: 100%;
 	}

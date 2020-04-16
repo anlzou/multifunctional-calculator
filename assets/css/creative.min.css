@@ -286,7 +286,7 @@ a {
 @media(max-width: 2900px) {
     .displayText {
         font-size: 20px !important;
-        max-height: 440px;
+        max-height: 790px;
         min-width: 100%;
     }
 }
@@ -295,28 +295,35 @@ a {
 @media(max-width: 800px) {
     .displayText {
         font-size: 24px !important;
-        max-height: 500px;
+        max-height: 800px;
     }
 }
 
 @media(max-width: 600px) {
     .displayText {
         font-size: 20px !important;
-        max-height: 340px;
+        max-height: 740px;
     }
 }
 
 @media(max-width: 360px) {
     .displayText {
         font-size: 20px !important;
-        max-height: 160px;
+        max-height: 760px;
     }
 }
 
 @media(max-width: 300px) {
     .displayText {
         font-size: 20px !important;
-        max-height: 40px;
+        max-height: 700px;
+    }
+}
+
+@media(max-width: 200px) {
+    .displayText {
+        font-size: 20px !important;
+        max-height: 600px;
     }
 }
 
