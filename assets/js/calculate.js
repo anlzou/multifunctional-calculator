@@ -476,8 +476,8 @@ $(document).ready(function () {
   // anlzou nav
   $('#what').click(function () {
     let displayText = "\<h4\>组合函数\<\/h4\>" + "组合函数C(n,m)，表示在n个数中选m个数，或者在集合n中选m个数，所以m&le;n的数量。<br/><br/>" + "\<h4\>基本按钮\<\/h4\>" + "C(cls)：清理输入框。" + "<br/>" + "D(delete)：使用输入框中的元素删除组合列表中的对应元素。" + "<br/>" +
-      "B(back)：输入框退格。" + "<br/>" + "R(reset,已经删除)：重置组合运算公式；与F5刷新、点击" + "“" + " Assemble-Calculator ”"
-      + "logo等同功能。" + "<br/><br/>" +
+      "B(back)：输入框退格。" + "<br/>" + "R(reset,已经删除)：重置组合运算公式；与F5刷新、点击" + "“" + " Assemble-Calculator ”" + "logo等同功能。<br>" +
+      "点击输入框，显示/隐藏键盘。" + "<br/><br/>" +
       "\<h4\>功能用法\<\/h4\>" + "1、输入任意多个数值，数值之间用" + "“" + " , " + "”" + "逗号按钮(连续数量&ge;1)隔开，" + "不能使用" + "“ , ”" + "逗号开头" + "<br/>" + tab + "例如：11,6&nbsp;表示从1到11中选6个的组合<br/>" + tab +
       "例如：1,0,3,6,2,6,,3&nbsp;表示从{1,0,3,6,2,6}中选3个的组合，集合中的元素可以重复，不能以0开头<br/>" + tab + "如果都只有一个" + "“" + " , " + "”" +
       "则取第一个(n,m)做组合运算，忽略m后面的值；<br/>" + tab + "如果存在连续的逗号大于1个，则取第一个连续逗号前面的所有数为集合n，选连续逗号后面的值为m进行组合运算，忽略m后面的值。" + "<br/>2、点击" + "“" + " = " + "”" +
@@ -504,8 +504,9 @@ $(document).ready(function () {
   });
 
   $('#version').click(function () {
-    let displayText = "\<h4\>2020年4月13日\<\/h4\>v3.00<br/>1、普通计算功能<br/>2、组合计算+删除功能\<br\/\>\<br\/\>" +
-      "\<h4\>2020年4月16日\<\/h4\>v3.10<br/>1、删除数据实时统计显示<br/>2、复制成功弹出提醒";
+    let displayText = "\<h4\>2020年4月17日\<\/h4\>v3.20<br/>1、添加键盘隐藏<br/><br/>" +
+      "\<h4\>2020年4月16日\<\/h4\>v3.10<br/>1、删除数据实时统计显示<br/>2、复制成功弹出提醒<br/><br/>" +
+      "\<h4\>2020年4月13日\<\/h4\>v3.00<br/>1、普通计算功能<br/>2、组合计算+删除功能\<br\/\>\<br\/\>";
     document.getElementById("displayText").innerHTML = displayText;
   });
 
@@ -655,3 +656,18 @@ function copy() {
 
 var rows_delete = 0;
 var data_rows = 11;
+var showKB = 0;
+
+function noShowKeyBords() {
+  var hideKB = document.getElementById("KB");
+  if (showKB == 0) {
+    hideKB.style.display = "none";
+    showKB = 1;
+    return;
+  } else {
+    hideKB.style.display = "";
+    showKB = 0;
+    return;
+  }
+
+}
