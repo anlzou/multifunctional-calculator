@@ -351,8 +351,24 @@ $(document).ready(function () {
     if (!(a instanceof Array) || !(b instanceof Array)) return false;
     if (a.length < b.length) return false;
     var aStr = a.toString();
+    console.log(aStr);
     for (var i = 0, len = b.length; i < len; i++) {
       if (aStr.indexOf(b[i]) == -1) return false;
+    }
+    return true;
+  }
+
+  //
+  function is_array_contain(a, b) {//判断数组a是否包答含b
+    for (var i = 0; i < b.length; i++) {
+      t = false;
+      for (var j = 0; j < a.length; j++) {
+        if (b[i] == a[j]) {
+          t = true;
+          break;
+        }
+      }
+      if (!t) return false;
     }
     return true;
   }
@@ -387,8 +403,10 @@ $(document).ready(function () {
           numListB.push(Number(listB[i]));
         }
         // console.log(numListB);
+        // console.log(arr2serch);
         for (let i in arr2serch) {
-          if (isContained(arr2serch[i], numListB)) {
+          //if (isContained(arr2serch[i], numListB)) {//is_array_contain
+          if (is_array_contain(arr2serch[i], numListB)) {
             q = Number(i) + 1;
             // console.log(q);
             let parent = document.getElementById("displayText");
