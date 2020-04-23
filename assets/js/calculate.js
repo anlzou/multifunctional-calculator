@@ -202,12 +202,11 @@ $(document).ready(function () {
   // 选择组合
   function groups(array, M) {
     var N = array.length;
-    var top = 0, queue = [], flag = [], arr = [], _arr = [];
+    var top = 0, queue = [], arr = [], _arr = [];
     function comb(s, n, m) {
       var i;
       if (s > n)
         return;
-
       if (top == m) {
         for (i = 0; i < m; i++) {
           _arr.push(queue[i]);
@@ -225,6 +224,32 @@ $(document).ready(function () {
     arr2serch = arr;
     return arr
   }
+
+  /*
+  //var num = 100;
+  var a = new Array();
+  var b = new Array();
+  var c = new Array();
+
+  function combination(n, r) {
+    for (let i = n; i >= r; i--) {
+      a[r] = i;
+      if (r > 1)
+        combination(i - 1, r - 1);
+      else {
+        // for (int j = a[0]; j > 0; j--) printf("%d ", a[j]);
+        // printf("\n");
+        for (let j = a[0]; j > 0; j--) {
+          b.push(a[j])
+        }
+        c.push(b);
+        b = [];
+      }
+    }
+  }
+  console.log()
+  arr2serch = c;
+  */
 
   // 控制输出长度 $001
   function PrefixInteger(num, length) {
